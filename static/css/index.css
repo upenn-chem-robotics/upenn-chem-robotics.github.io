@@ -155,3 +155,72 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.penn-logo {
+  height: 72px;
+  width: auto;
+  margin-bottom: 18px;
+}
+
+.toc {
+  position: fixed;
+  top: 28px;
+  left: 22px;
+  z-index: 30;
+  width: 168px;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc-item;
+}
+
+.toc > ol > li {
+  counter-increment: toc-item;
+  margin-bottom: 8px;
+}
+
+.toc a {
+  color: #9a9a9a;
+  text-decoration: none;
+}
+
+.toc > ol > li > a::before {
+  content: counter(toc-item) ". ";
+}
+
+.toc a:hover,
+.toc a.active {
+  color: #111;
+}
+
+.toc a.active {
+  font-weight: 600;
+}
+
+.toc ol ol {
+  margin-top: 3px;
+  padding-left: 16px;
+}
+
+.toc ol ol a {
+  display: block;
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+.section[id],
+.subsection[id] {
+  scroll-margin-top: 16px;
+}
+
+@media (max-width: 1180px) {
+  .toc {
+    display: none;
+  }
+}

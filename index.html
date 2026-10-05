@@ -23,13 +23,34 @@
 </head>
 <body>
 
+<nav class="toc" aria-label="Table of contents">
+  <ol>
+    <li>
+      <a href="#abstract">Abstract</a>
+      <ol>
+        <li><a href="#contributions">Contributions</a></li>
+      </ol>
+    </li>
+    <li>
+      <a href="#results">Results</a>
+      <ol>
+        <li><a href="#short-horizon">Short Horizon</a></li>
+        <li><a href="#long-horizon">Long Horizon</a></li>
+      </ol>
+    </li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#failure">Failure</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</nav>
+
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <!-- UPenn Logo Placeholder -->
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/1200px-UPenn_shield_with_banner.svg.png" alt="UPenn Logo" style="height: 80px; margin-bottom: 20px;">
+          <img class="penn-logo" src="./static/images/penn-logo.png" alt="University of Pennsylvania">
           
           <h1 class="title is-1 publication-title">Chemistry Robotics: Automating Chemical Synthesis</h1>
           
@@ -52,21 +73,33 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper (Coming Soon)</span>
+                <a href="#data" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-database"></i></span>
+                  <span>Data</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/RamaChem/lerobot_ros2" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
               </span>
               <span class="link-block">
+                <a href="https://upenn-chem-robotics.github.io/project-docs/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-book"></i></span>
+                  <span>Documentation</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#results" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-excel"></i></span>
+                  <span>Results</span>
+                </a>
+              </span>
+              <span class="link-block">
                 <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="far fa-images"></i></span>
-                  <span>Data</span>
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (Coming Soon)</span>
                 </a>
               </span>
             </div>
@@ -91,7 +124,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="abstract">
   <div class="container is-max-desktop">
     <!-- Abstract -->
     <div class="columns is-centered has-text-centered">
@@ -106,9 +139,9 @@
     </div>
 
     <!-- Contributions -->
-    <div class="columns is-centered has-text-centered" style="margin-top: 30px;">
+    <div class="columns is-centered has-text-centered subsection" id="contributions" style="margin-top: 30px;">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Contributions</h2>
+        <h3 class="title is-4">Contributions</h3>
         <div class="content has-text-justified">
           <ul>
             <li><strong>Contribution 1:</strong> [Detail your first chem + robotics contribution]</li>
@@ -121,10 +154,137 @@
   </div>
 </section>
 
-<section class="section is-light">
+<section class="section is-light" id="results">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Methodology</h2>
+    <h2 class="title is-3 has-text-centered">Results</h2>
+
+    <div id="short-horizon" class="subsection">
+      <h3 class="title is-4 has-text-centered">Short Horizon</h3>
+      <p class="has-text-centered" style="margin-bottom: 20px;">
+        We evaluated our system across 12 distinct short-horizon tasks, measuring both overall success rates and subtask completions.
+      </p>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Task 1: Pick and Place (Success: 95%)</p>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Task 2: Tool Use (Success: 88%)</p>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Task 3: Pouring (Success: 92%)</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="long-horizon" class="subsection" style="margin-top: 48px;">
+      <h3 class="title is-4 has-text-centered">Long Horizon</h3>
+      <div class="content">
+        <p>
+          Long horizon tasks are critical in chemistry for processes like <strong>synthesis, purification, and isolation</strong>. We evaluated our system on 3 complex, multi-step procedures.
+        </p>
+        <ul>
+          <li><strong>1. Within Dataset:</strong> Tasks seen during training.</li>
+          <li><strong>2. Partial Dataset:</strong> Tasks with some novel elements.</li>
+          <li><strong>3. Outside Dataset:</strong> Completely novel configurations.</li>
+        </ul>
+        <p>
+          <strong>Key Contribution:</strong> We successfully fine-tuned the model with very little data (few episodes). We emphasize that the model was trained on the <em>entire video</em> sequence, not just segmented subtasks. Videos below are labeled with their respective subtasks.
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Synthesis</p>
+        </div>
+        <div class="column is-one-third">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Purification</p>
+        </div>
+        <div class="column is-one-third">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Isolation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="data">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Data</h2>
     
+    <div class="content">
+      <h3 class="title is-4">Dataset Statistics</h3>
+      <ul>
+        <li><strong>Total Episodes:</strong> [X] episodes</li>
+        <li><strong>Total Hours:</strong> [Y] hours of teleoperation</li>
+        <li><strong>Task Range:</strong> From simple pick-and-place to complex tool use.</li>
+      </ul>
+
+      <h3 class="title is-4">Data Collection for Physical AI</h3>
+      <p><strong>How to collect data interesting for physical AI?</strong> High-fidelity data requires synchronized multi-view cameras, low-latency teleoperation, and a diverse set of initial conditions to ensure the policy generalizes.</p>
+      
+      <p><strong>What makes data useful?</strong> Useful data captures not just the successful completion of a task, but the subtle corrective movements made by the human operator. It should cover edge cases and varied environments.</p>
+      
+      <p><strong>Evaluation Benchmark:</strong> We demonstrate that starting with our dataset is highly useful for the community. We provide benchmarks on overall success rates and success rates per motion (e.g., picking is highly reliable, while task-specific tool use requires more precision).</p>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light" id="failure">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Failure</h2>
+    
+    <div class="content">
+      <p>
+        Understanding failures is crucial for advancing physical AI. We analyzed several modes of failure in our policies:
+      </p>
+      <ul>
+        <li>Bad grasping</li>
+        <li>Unexpected pausing</li>
+        <li>Misplacement of objects</li>
+        <li>Collisions</li>
+        <li>Dropped objects</li>
+      </ul>
+      
+      <p>
+        <strong>Oopsie-Data:</strong> Sometimes, suboptimal success or failure provides valuable learning signals. We draw inspiration from <a href="https://oopsie-data.com/">Oopsie</a>, noting that failure states can be used to train more robust recovery policies.
+      </p>
+      <p>
+        <strong>Future Work (DAgger):</strong> We plan to incorporate DAgger (Dataset Aggregation) using history (actions + images) to iteratively correct these failure modes during teleoperation.
+      </p>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 10px; border: 2px solid red;">
+          <source src="./static/videos/placeholder.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="color: red;">Example: Grasping Failure</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method</h2>
+
     <div class="columns is-vcentered">
       <div class="column is-half">
         <h3 class="title is-4">Hardware Setup & Teleoperation</h3>
@@ -133,7 +293,6 @@
         </p>
       </div>
       <div class="column is-half">
-        <!-- Teleop Video/Pic Placeholder -->
         <video autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
           <source src="./static/videos/placeholder.mp4" type="video/mp4">
         </video>
@@ -156,143 +315,12 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results: 12 Short Horizon Policies</h2>
-    <p class="has-text-centered" style="margin-bottom: 20px;">
-      We evaluated our system across 12 distinct short-horizon tasks, measuring both overall success rates and subtask completions.
-    </p>
-    
-    <!-- Carousel for 12 policies -->
-    <div id="results-carousel" class="carousel results-carousel">
-      <!-- Add 12 of these items -->
-      <div class="item">
-        <video autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered">Task 1: Pick and Place (Success: 95%)</p>
-      </div>
-      <div class="item">
-        <video autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered">Task 2: Tool Use (Success: 88%)</p>
-      </div>
-      <div class="item">
-        <video autoplay controls muted loop playsinline height="100%">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered">Task 3: Pouring (Success: 92%)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Dataset Characteristics & Physical AI</h2>
-    
-    <div class="content">
-      <h3 class="title is-4">Dataset Statistics</h3>
-      <ul>
-        <li><strong>Total Episodes:</strong> [X] episodes</li>
-        <li><strong>Total Hours:</strong> [Y] hours of teleoperation</li>
-        <li><strong>Task Range:</strong> From simple pick-and-place to complex tool use.</li>
-      </ul>
-
-      <h3 class="title is-4">Data Collection for Physical AI</h3>
-      <p><strong>How to collect data interesting for physical AI?</strong> High-fidelity data requires synchronized multi-view cameras, low-latency teleoperation, and a diverse set of initial conditions to ensure the policy generalizes.</p>
-      
-      <p><strong>What makes data useful?</strong> Useful data captures not just the successful completion of a task, but the subtle corrective movements made by the human operator. It should cover edge cases and varied environments.</p>
-      
-      <p><strong>Evaluation Benchmark:</strong> We demonstrate that starting with our dataset is highly useful for the community. We provide benchmarks on overall success rates and success rates per motion (e.g., picking is highly reliable, while task-specific tool use requires more precision).</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results: 3 Long Horizon Policies</h2>
-    
-    <div class="content">
-      <p>
-        Long horizon tasks are critical in chemistry for processes like <strong>synthesis, purification, and isolation</strong>. We evaluated our system on 3 complex, multi-step procedures.
-      </p>
-      <ul>
-        <li><strong>1. Within Dataset:</strong> Tasks seen during training.</li>
-        <li><strong>2. Partial Dataset:</strong> Tasks with some novel elements.</li>
-        <li><strong>3. Outside Dataset:</strong> Completely novel configurations.</li>
-      </ul>
-      <p>
-        <strong>Key Contribution:</strong> We successfully fine-tuned the model with very little data (few episodes). We emphasize that the model was trained on the <em>entire video</em> sequence, not just segmented subtasks. Videos below are labeled with their respective subtasks.
-      </p>
-    </div>
-
-    <div class="columns is-centered">
-      <div class="column is-one-third">
-        <video autoplay controls muted loop playsinline width="100%">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered">Synthesis</p>
-      </div>
-      <div class="column is-one-third">
-        <video autoplay controls muted loop playsinline width="100%">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered">Purification</p>
-      </div>
-      <div class="column is-one-third">
-        <video autoplay controls muted loop playsinline width="100%">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered">Isolation</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section is-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Failure Analysis & Learnings</h2>
-    
-    <div class="content">
-      <p>
-        Understanding failures is crucial for advancing physical AI. We analyzed several modes of failure in our policies:
-      </p>
-      <ul>
-        <li>Bad grasping</li>
-        <li>Unexpected pausing</li>
-        <li>Misplacement of objects</li>
-        <li>Collisions</li>
-        <li>Dropped objects</li>
-      </ul>
-      
-      <p>
-        <strong>Oopsie-Data:</strong> Sometimes, suboptimal success or failure provides valuable learning signals. We draw inspiration from <a href="https://oopsie-data.com/">Oopsie</a>, noting that failure states can be used to train more robust recovery policies.
-      </p>
-      <p>
-        <strong>Future Work (DAgger):</strong> We plan to incorporate DAgger (Dataset Aggregation) using history (actions + images) to iteratively correct these failure modes during teleoperation.
-      </p>
-    </div>
-
-    <!-- Failure Video Placeholder -->
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 10px; border: 2px solid red;">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered" style="color: red;">Example: Grasping Failure</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
+<section class="section is-light" id="acknowledgments">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Acknowledgments</h2>
     <div class="content has-text-justified">
       <p>
-        We would like to thank [Names/Grants/Institutions]. This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+        We would like to thank [Names/Grants/Institutions].
       </p>
     </div>
   </div>
@@ -302,7 +330,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        Website source code available on <a href="#">GitHub</a>.
+        This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
       </p>
     </div>
   </div>
