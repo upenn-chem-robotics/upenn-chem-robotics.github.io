@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Chemistry Robotics: Bridging the gap between chemical synthesis and robotic automation.">
+  <meta name="keywords" content="Chemistry, Robotics, Lerobot, Gello, Diffusion Policy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chemistry Robotics</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="toc" aria-label="Table of contents">
+  <ol>
+    <li>
+      <a href="#abstract">Abstract</a>
+      <ol>
+        <li><a href="#contributions">Contributions</a></li>
+      </ol>
+    </li>
+    <li>
+      <a href="#results">Results</a>
+      <ol>
+        <li><a href="#short-horizon">Short Horizon</a></li>
+        <li><a href="#long-horizon">Long Horizon</a></li>
+      </ol>
+    </li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#failure">Failure</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Chemistry Robotics: Automating Chemical Synthesis</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Author 1</a>,</span>
+            <span class="author-block">
+              <a href="#">Author 2</a>,</span>
+            <span class="author-block">
+              <a href="#">Corresponding Author</a><sup>*</sup>
+            </span>
+          </div>
+
+          <img class="penn-logo" src="./static/images/penn-logo.png" alt="University of Pennsylvania">
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Corresponding author: <a href="mailto:email@upenn.edu">email@upenn.edu</a></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#data" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-database"></i></span>
+                  <span>Data</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/RamaChem/lerobot_ros2" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://upenn-chem-robotics.github.io/project-docs/" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-book"></i></span>
+                  <span>Documentation</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#results" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-excel"></i></span>
+                  <span>Results</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- Main Video Placeholder -->
+      <video id="teaser" autoplay muted loop playsinline height="100%" style="border-radius: 10px;">
+        <source src="./static/videos/placeholder.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
+        Our robotic system successfully executes a variety of chemical synthesis and manipulation policies.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            [Insert your abstract here. Discuss the intersection of chemistry and robotics, the challenges of physical AI in a lab environment, and how your approach solves these problems.]
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contributions -->
+    <div class="columns is-centered has-text-centered subsection" id="contributions" style="margin-top: 30px;">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Contributions</h3>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Contribution 1:</strong> [Detail your first chem + robotics contribution]</li>
+            <li><strong>Contribution 2:</strong> [Detail your second chem + robotics contribution]</li>
+            <li><strong>Contribution 3:</strong> [Detail your third chem + robotics contribution]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+
+    <div id="short-horizon" class="subsection">
+      <h3 class="title is-4 has-text-centered">Short Horizon</h3>
+      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+        Twelve short-horizon policies grouped by primitive. Each cell shows an autonomous rollout and task success rate.
+      </p>
+
+      <div class="container policy-results-container">
+        <div class="short-horizon-grid">
+
+          <div class="policy-category">
+            <div class="policy-category-title">Pick-and-place</div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/pick_vial_from_rack.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Pick vial from rack</p>
+              <p class="policy-cell-rate">Success: 100% (20/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/pick_and_place_vial.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Pick vial and place on rack</p>
+              <p class="policy-cell-rate">Success: 80% (16/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/funnel_insertion.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Insert funnel into flask</p>
+              <p class="policy-cell-rate">Success: 75% (15/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/drop_stir_bar.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Drop stir bar into flask</p>
+              <p class="policy-cell-rate">Success: 75% (15/20)</p>
+            </div>
+          </div>
+
+          <div class="policy-category">
+            <div class="policy-category-title">Dynamic execution</div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/pour_liquid.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Pour liquid</p>
+              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/dose_solid.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Dose solid</p>
+              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/scoop_powder.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Scoop powder</p>
+              <p class="policy-cell-rate">Success: 30% (6/20)</p>
+            </div>
+          </div>
+
+          <div class="policy-category">
+            <div class="policy-category-title">Contact-rich manipulation</div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/aspirate_dispense.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Aspirate &amp; dispense liquid</p>
+              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/cap_vial.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Cap vial</p>
+              <p class="policy-cell-rate">Success: 35% (7/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/uncap_vial.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Uncap vial</p>
+              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+            </div>
+          </div>
+
+          <div class="policy-category">
+            <div class="policy-category-title">Precise manipulation</div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/insert_needle.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Insert needle into vial</p>
+              <p class="policy-cell-rate">Success: 75% (15/20)</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/secure_septum.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Press septum into flask</p>
+              <p class="policy-cell-rate">Success: 40% (8/20)</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="long-horizon" class="subsection" style="margin-top: 48px;">
+      <h3 class="title is-4 has-text-centered">Long Horizon</h3>
+      <div class="content">
+        <p>
+          Long horizon tasks are critical in chemistry for processes like <strong>synthesis, purification, and isolation</strong>. We evaluated our system on 3 complex, multi-step procedures.
+        </p>
+        <ul>
+          <li><strong>1. Within Dataset:</strong> Tasks seen during training.</li>
+          <li><strong>2. Partial Dataset:</strong> Tasks with some novel elements.</li>
+          <li><strong>3. Outside Dataset:</strong> Completely novel configurations.</li>
+        </ul>
+        <p>
+          <strong>Key Contribution:</strong> We successfully fine-tuned the model with very little data (few episodes). We emphasize that the model was trained on the <em>entire video</em> sequence, not just segmented subtasks. Videos below are labeled with their respective subtasks.
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Synthesis</p>
+        </div>
+        <div class="column is-one-third">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Purification</p>
+        </div>
+        <div class="column is-one-third">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered">Isolation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="data">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Data</h2>
+    
+    <div class="content">
+      <h3 class="title is-4">Dataset Statistics</h3>
+      <ul>
+        <li><strong>Total Episodes:</strong> [X] episodes</li>
+        <li><strong>Total Hours:</strong> [Y] hours of teleoperation</li>
+        <li><strong>Task Range:</strong> From simple pick-and-place to complex tool use.</li>
+      </ul>
+
+      <h3 class="title is-4">Data Collection for Physical AI</h3>
+      <p><strong>How to collect data interesting for physical AI?</strong> High-fidelity data requires synchronized multi-view cameras, low-latency teleoperation, and a diverse set of initial conditions to ensure the policy generalizes.</p>
+      
+      <p><strong>What makes data useful?</strong> Useful data captures not just the successful completion of a task, but the subtle corrective movements made by the human operator. It should cover edge cases and varied environments.</p>
+      
+      <p><strong>Evaluation Benchmark:</strong> We demonstrate that starting with our dataset is highly useful for the community. We provide benchmarks on overall success rates and success rates per motion (e.g., picking is highly reliable, while task-specific tool use requires more precision).</p>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light" id="failure">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Failure</h2>
+    
+    <div class="content">
+      <p>
+        Understanding failures is crucial for advancing physical AI. We analyzed several modes of failure in our policies:
+      </p>
+      <ul>
+        <li>Bad grasping</li>
+        <li>Unexpected pausing</li>
+        <li>Misplacement of objects</li>
+        <li>Collisions</li>
+        <li>Dropped objects</li>
+      </ul>
+      
+      <p>
+        <strong>Oopsie-Data:</strong> Sometimes, suboptimal success or failure provides valuable learning signals. We draw inspiration from <a href="https://oopsie-data.com/">Oopsie</a>, noting that failure states can be used to train more robust recovery policies.
+      </p>
+      <p>
+        <strong>Future Work (DAgger):</strong> We plan to incorporate DAgger (Dataset Aggregation) using history (actions + images) to iteratively correct these failure modes during teleoperation.
+      </p>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 10px; border: 2px solid red;">
+          <source src="./static/videos/placeholder.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="color: red;">Example: Grasping Failure</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method</h2>
+
+    <div class="columns is-vcentered">
+      <div class="column is-half">
+        <h3 class="title is-4">Hardware Setup & Teleoperation</h3>
+        <p>
+          We utilize open-sourced hardware (Gello) and software (Lerobot) to enable intuitive teleoperation for data collection. The setup includes multiple camera viewpoints to capture the intricate details of chemical manipulation.
+        </p>
+      </div>
+      <div class="column is-half">
+        <video autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
+          <source src="./static/videos/placeholder.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="columns is-vcentered" style="margin-top: 30px;">
+      <div class="column is-full">
+        <h3 class="title is-4">Diffusion Policy for Chemists</h3>
+        <div class="content">
+          <p>
+            <strong>How it works:</strong> Instead of programming exact movements, we teach the robot by showing it examples. The "Diffusion Policy" takes in what the robot sees (camera images) and its current position (input), and gradually refines a plan of action until it produces the correct next movement (output).
+          </p>
+          <p>
+            Think of it like a chemist learning a new titration technique: you observe the setup, remember your training, and continuously adjust your hand movements based on the color change in the flask.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light" id="acknowledgments">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Acknowledgments</h2>
+    <div class="content has-text-justified">
+      <p>
+        We would like to thank [Names/Grants/Institutions].
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

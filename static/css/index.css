@@ -1,0 +1,305 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+.penn-logo {
+  height: 64px;
+  width: auto;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.toc {
+  position: fixed;
+  top: 28px;
+  left: 22px;
+  z-index: 30;
+  width: 168px;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc-item;
+}
+
+.toc > ol > li {
+  counter-increment: toc-item;
+  margin-bottom: 8px;
+}
+
+.toc a {
+  color: #9a9a9a;
+  text-decoration: none;
+}
+
+.toc > ol > li > a::before {
+  content: counter(toc-item) ". ";
+}
+
+.toc a:hover,
+.toc a.active {
+  color: #111;
+}
+
+.toc a.active {
+  font-weight: 600;
+}
+
+.toc ol ol {
+  margin-top: 3px;
+  padding-left: 16px;
+}
+
+.toc ol ol a {
+  display: block;
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+.section[id],
+.subsection[id] {
+  scroll-margin-top: 16px;
+}
+
+@media (max-width: 1180px) {
+  .toc {
+    display: none;
+  }
+}
+
+.policy-results-container {
+  max-width: 1280px;
+}
+
+.short-horizon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .short-horizon-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .short-horizon-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.policy-category-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  background: #ececec;
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.policy-cell {
+  margin-bottom: 1.25rem;
+}
+
+.policy-cell-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #111;
+  overflow: hidden;
+}
+
+.policy-cell-media--wide {
+  aspect-ratio: 77 / 40;
+  min-height: 200px;
+}
+
+.policy-cell-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.policy-cell-name {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0.45rem;
+  margin-bottom: 0.15rem;
+  line-height: 1.3;
+}
+
+.policy-cell-rate {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #555;
+}
