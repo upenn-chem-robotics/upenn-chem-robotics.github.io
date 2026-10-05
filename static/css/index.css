@@ -264,11 +264,25 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.policy-cell video {
+.policy-cell-media {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background: #111;
+  overflow: hidden;
+}
+
+.policy-cell-media--wide {
+  aspect-ratio: 77 / 40;
+  min-height: 200px;
+}
+
+.policy-cell-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 

@@ -50,6 +50,23 @@ $(document).ready(function() {
       window.addEventListener('scroll', updateToc, {passive: true});
     }
 
+    var policyVideos = document.querySelectorAll('.policy-cell-media video');
+    if ('IntersectionObserver' in window && policyVideos.length) {
+      var policyObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(function() {});
+          } else {
+            video.pause();
+          }
+        });
+      }, {root: null, threshold: 0.25});
+      policyVideos.forEach(function(video) {
+        policyObserver.observe(video);
+      });
+    }
+
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
