@@ -158,27 +158,113 @@
 
     <div id="short-horizon" class="subsection">
       <h3 class="title is-4 has-text-centered">Short Horizon</h3>
-      <p class="has-text-centered" style="margin-bottom: 20px;">
-        We evaluated our system across 12 distinct short-horizon tasks, measuring both overall success rates and subtask completions.
+      <p class="has-text-centered" style="margin-bottom: 1.5rem;">
+        Twelve short-horizon policies grouped by primitive. Each cell shows an autonomous rollout and task success rate.
       </p>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/placeholder.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered">Task 1: Pick and Place (Success: 95%)</p>
-        </div>
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/placeholder.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered">Task 2: Tool Use (Success: 88%)</p>
-        </div>
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/placeholder.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered">Task 3: Pouring (Success: 92%)</p>
+
+      <div class="container policy-results-container">
+        <div class="short-horizon-grid">
+
+          <div class="policy-category">
+            <div class="policy-category-title">Pick-and-place</div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata" poster="">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Pick vial from rack</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/combined_pick_web.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Pick and place vial</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Funnel insertion</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Drop stir bar</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+          </div>
+
+          <div class="policy-category">
+            <div class="policy-category-title">Dynamic execution</div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Pour liquid</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Dose solid</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Scoop powder</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+          </div>
+
+          <div class="policy-category">
+            <div class="policy-category-title">Contact-rich manipulation</div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Aspirate &amp; dispense liquid</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Cap vial</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Uncap vial</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+          </div>
+
+          <div class="policy-category">
+            <div class="policy-category-title">Precise manipulation</div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Insert needle</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+            <div class="policy-cell">
+              <video controls playsinline preload="metadata">
+                <source src="./static/videos/placeholder.mp4" type="video/mp4">
+              </video>
+              <p class="policy-cell-name">Secure septum</p>
+              <p class="policy-cell-rate">Success: —%</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
