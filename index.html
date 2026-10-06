@@ -297,35 +297,23 @@
       <h3 class="title is-4 has-text-centered">Long Horizon</h3>
       <div class="content">
         <p>
-          Long horizon tasks are critical in chemistry for processes like <strong>synthesis, purification, and isolation</strong>. We evaluated our system on 3 complex, multi-step procedures.
-        </p>
-        <ul>
-          <li><strong>1. Within Dataset:</strong> Tasks seen during training.</li>
-          <li><strong>2. Partial Dataset:</strong> Tasks with some novel elements.</li>
-          <li><strong>3. Outside Dataset:</strong> Completely novel configurations.</li>
-        </ul>
-        <p>
-          <strong>Key Contribution:</strong> We successfully fine-tuned the model with very little data (few episodes). We emphasize that the model was trained on the <em>entire video</em> sequence, not just segmented subtasks. Videos below are labeled with their respective subtasks.
+          Long-horizon tasks are critical in chemistry for processes like <strong>synthesis, purification, and isolation</strong>. We evaluate end-to-end rollouts on complete, multi-step procedures. The autonomous rollout is played at the speed shown in its badge; the current subtask is annotated at the top of each video.
         </p>
       </div>
-      <div class="columns is-centered">
-        <div class="column is-one-third">
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/placeholder.mp4" type="video/mp4">
+
+      <!-- Purification: liquid-liquid extraction -->
+      <div class="lh-cell">
+        <p class="lh-cell-title">Purification &mdash; liquid&ndash;liquid extraction</p>
+        <div class="lh-cell-media policy-cell-media--3x">
+          <video controls playsinline muted autoplay preload="metadata"
+                 data-steps='[
+                   {"t": 0.00,  "label": "1. Place separatory funnel into ring clamp"},
+                   {"t": 7.67,  "label": "2. Place funnel into separatory funnel"},
+                   {"t": 15.67, "label": "3. Pour blue liquid into funnel"}
+                 ]'>
+            <source src="https://cdn.jsdelivr.net/gh/upenn-chem-robotics/short-horizon-media@77ff800a7f/lh2_purification.mp4" type="video/mp4">
           </video>
-          <p class="has-text-centered">Synthesis</p>
-        </div>
-        <div class="column is-one-third">
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/placeholder.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered">Purification</p>
-        </div>
-        <div class="column is-one-third">
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/placeholder.mp4" type="video/mp4">
-          </video>
-          <p class="has-text-centered">Isolation</p>
+          <div class="lh-step-overlay"></div>
         </div>
       </div>
     </div>

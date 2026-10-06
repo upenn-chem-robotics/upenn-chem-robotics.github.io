@@ -50,9 +50,54 @@ $(document).ready(function() {
       window.addEventListener('scroll', updateToc, {passive: true});
     }
 
-    var policyVideos = document.querySelectorAll('.policy-cell-media video');
-    if ('IntersectionObserver' in window && policyVideos.length) {
+    // All autonomous rollout videos: short-horizon policy tiles + long-horizon tiles.
+    var autonomousVideos = document.querySelectorAll(
+      '.policy-cell-media video, .lh-cell-media video'
+    );
+
+    if ('IntersectionObserver' in window && autonomousVideos.length) {
       var MAX_LOOPS = 5; // stop auto-looping after N iterations to avoid long-run decoder exhaustion
+
+      // Find the parent cell wrapper (policy or long-horizon) for a given video.
+      function cellOf(video) {
+        return video.closest('.policy-cell-media, .lh-cell-media');
+      }
+      function stoppedClassOf(cell) {
+        return cell.classList.contains('lh-cell-media')
+          ? 'lh-cell-media--stopped'
+          : 'policy-cell-media--stopped';
+      }
+
+      // Update the top-center step overlay for a LH video based on currentTime.
+      // Steps come from a data-steps JSON attribute: [{t: seconds, label: "..."}].
+      function updateStepOverlay(video) {
+        var cell = cellOf(video);
+        if (!cell) return;
+        var overlay = cell.querySelector('.lh-step-overlay');
+        if (!overlay) return;
+        var steps = video._steps;
+        if (!steps || !steps.length) return;
+        var t = video.currentTime;
+        var active = null;
+        for (var i = 0; i < steps.length; i++) {
+          if (steps[i].t <= t + 0.02) active = steps[i];
+          else break;
+        }
+        var text = active ? active.label : '';
+        if (overlay.textContent !== text) overlay.textContent = text;
+        overlay.classList.toggle('is-visible', !!text);
+      }
+
+      // Fresh-start a video: reset playback position + loop counter + stopped flag.
+      function restart(video) {
+        var cell = cellOf(video);
+        video.dataset.loops = '0';
+        delete video.dataset.stopped;
+        if (cell) cell.classList.remove(stoppedClassOf(cell));
+        try { video.currentTime = 0; } catch (e) {}
+        updateStepOverlay(video);
+        video.play().catch(function() {});
+      }
 
       // Preload videos just before they scroll into view so the first frame is ready.
       var preloadObserver = new IntersectionObserver(function(entries) {
@@ -68,18 +113,8 @@ $(document).ready(function() {
         });
       }, {root: null, rootMargin: '200px 0px', threshold: 0});
 
-      // Fresh-start a video: reset playback position + loop counter + stopped flag.
-      function restart(video) {
-        var cell = video.closest('.policy-cell-media');
-        video.dataset.loops = '0';
-        delete video.dataset.stopped;
-        if (cell) cell.classList.remove('policy-cell-media--stopped');
-        try { video.currentTime = 0; } catch (e) {}
-        video.play().catch(function() {});
-      }
-
       // Only play videos actually in the viewport. Pause everything else so the
-      // browser isn't decoding 12 streams at once (which causes stutter over time).
+      // browser isn't decoding many streams at once (which causes stutter over time).
       // Each time a tile re-enters view, it starts from the beginning.
       var playObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -92,11 +127,28 @@ $(document).ready(function() {
         });
       }, {root: null, threshold: 0.5});
 
-      // Count loops. After MAX_LOOPS, stop autoplay and show a replay affordance.
-      // Clicking the tile restarts the loop counter.
-      policyVideos.forEach(function(video) {
+      autonomousVideos.forEach(function(video) {
         video.dataset.loops = '0';
-        var cell = video.closest('.policy-cell-media');
+        var cell = cellOf(video);
+
+        // Parse data-steps once and attach to the element.
+        var raw = video.getAttribute('data-steps');
+        if (raw) {
+          try {
+            video._steps = JSON.parse(raw);
+            video._steps.sort(function(a, b) { return a.t - b.t; });
+          } catch (e) { video._steps = null; }
+        }
+
+        // Live-update step overlay as time progresses.
+        if (video._steps) {
+          video.addEventListener('timeupdate', function() {
+            updateStepOverlay(video);
+          });
+          video.addEventListener('seeked', function() {
+            updateStepOverlay(video);
+          });
+        }
 
         video.addEventListener('ended', function() {
           var n = parseInt(video.dataset.loops || '0', 10) + 1;
@@ -104,11 +156,12 @@ $(document).ready(function() {
           if (n >= MAX_LOOPS) {
             video.loop = false;
             video.dataset.stopped = '1';
-            if (cell) cell.classList.add('policy-cell-media--stopped');
+            if (cell) cell.classList.add(stoppedClassOf(cell));
             video.pause();
           } else {
             // keep looping manually (we removed native loop so we can count)
             video.currentTime = 0;
+            updateStepOverlay(video);
             video.play().catch(function() {});
           }
         });
@@ -133,9 +186,9 @@ $(document).ready(function() {
       // beginning when the tab comes back.
       document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-          policyVideos.forEach(function(v) { v.pause(); });
+          autonomousVideos.forEach(function(v) { v.pause(); });
         } else {
-          policyVideos.forEach(function(v) {
+          autonomousVideos.forEach(function(v) {
             var r = v.getBoundingClientRect();
             var inView = r.top < window.innerHeight && r.bottom > 0;
             if (inView) restart(v);
