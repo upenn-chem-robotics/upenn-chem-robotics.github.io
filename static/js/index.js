@@ -52,8 +52,9 @@ $(document).ready(function() {
 
     var policyVideos = document.querySelectorAll('.policy-cell-media video');
     if ('IntersectionObserver' in window && policyVideos.length) {
-      // Preload (download) videos a bit before they enter the viewport so there's
-      // enough buffer for smooth real-time playback instead of mid-rollout stalls.
+      var MAX_LOOPS = 5; // stop auto-looping after N iterations to avoid long-run decoder exhaustion
+
+      // Preload videos just before they scroll into view so the first frame is ready.
       var preloadObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
@@ -65,27 +66,76 @@ $(document).ready(function() {
             preloadObserver.unobserve(video);
           }
         });
-      }, {root: null, rootMargin: '400px 0px', threshold: 0});
+      }, {root: null, rootMargin: '200px 0px', threshold: 0});
 
-      // Play when visible, pause when fully offscreen.
-      // Stagger starts across visible videos so their decode/paint ticks don't
-      // all line up on the same frame (reduces peak CPU/GPU load on 12 clips).
-      var staggerIdx = 0;
+      // Only play videos actually in the viewport. Pause everything else so the
+      // browser isn't decoding 12 streams at once (which causes stutter over time).
       var playObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
           if (entry.isIntersecting) {
-            var delay = (staggerIdx++ % 6) * 120;
-            setTimeout(function() { video.play().catch(function() {}); }, delay);
+            if (!video.dataset.stopped) {
+              video.play().catch(function() {});
+            }
           } else {
             video.pause();
           }
         });
-      }, {root: null, threshold: 0.25});
+      }, {root: null, threshold: 0.5});
 
+      // Count loops. After MAX_LOOPS, stop autoplay and show a replay affordance.
+      // Clicking the tile restarts the loop counter.
       policyVideos.forEach(function(video) {
+        video.dataset.loops = '0';
+        var cell = video.closest('.policy-cell-media');
+
+        video.addEventListener('ended', function() {
+          var n = parseInt(video.dataset.loops || '0', 10) + 1;
+          video.dataset.loops = String(n);
+          if (n >= MAX_LOOPS) {
+            video.loop = false;
+            video.dataset.stopped = '1';
+            if (cell) cell.classList.add('policy-cell-media--stopped');
+            video.pause();
+          } else {
+            // keep looping manually (we removed native loop so we can count)
+            video.currentTime = 0;
+            video.play().catch(function() {});
+          }
+        });
+
+        // Disable native loop so 'ended' fires each iteration.
+        video.loop = false;
+
+        if (cell) {
+          cell.addEventListener('click', function(e) {
+            if (video.dataset.stopped) {
+              e.preventDefault();
+              video.dataset.loops = '0';
+              delete video.dataset.stopped;
+              cell.classList.remove('policy-cell-media--stopped');
+              video.currentTime = 0;
+              video.play().catch(function() {});
+            }
+          });
+        }
+
         preloadObserver.observe(video);
         playObserver.observe(video);
+      });
+
+      // Pause everything when the tab is hidden; resume visible ones when it returns.
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          policyVideos.forEach(function(v) { v.pause(); });
+        } else {
+          policyVideos.forEach(function(v) {
+            if (v.dataset.stopped) return;
+            var r = v.getBoundingClientRect();
+            var inView = r.top < window.innerHeight && r.bottom > 0;
+            if (inView) v.play().catch(function() {});
+          });
+        }
       });
     }
 

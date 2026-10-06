@@ -324,6 +324,35 @@ body {
   content: "Autonomous 2\00D7";
 }
 
+/* When a video has looped MAX_LOOPS times, JS adds this class so the cell
+   dims and shows a replay prompt. Click anywhere on the tile to restart. */
+.policy-cell-media--stopped {
+  cursor: pointer;
+}
+
+.policy-cell-media--stopped video {
+  filter: brightness(0.55);
+  transition: filter 0.2s ease;
+}
+
+.policy-cell-media--stopped::before {
+  content: "\21BB  Replay";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.78);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  z-index: 3;
+}
+
 .policy-cell-media--wide {
   aspect-ratio: 77 / 40;
   min-height: 160px;
