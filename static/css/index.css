@@ -249,19 +249,41 @@ body {
   }
 }
 
+.policy-category {
+  padding: 0.6rem 0.65rem 0.4rem;
+  border-radius: 10px;
+  background: transparent;
+}
+
 .policy-category-title {
   font-family: 'Google Sans', sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
   text-align: center;
   background: #ececec;
+  color: #333;
   border-radius: 6px;
   padding: 0.55rem 0.75rem;
   margin-bottom: 1rem;
+  letter-spacing: 0.01em;
 }
 
+/* Per-category color palette: soft tint on column + bolder banner */
+.policy-category--pick    { background: #eef4fa; }
+.policy-category--dynamic { background: #edf7ee; }
+.policy-category--contact { background: #fdf4e5; }
+.policy-category--precise { background: #faeef0; }
+
+.policy-category--pick    .policy-category-title { background: #3f7cb6; color: #fff; }
+.policy-category--dynamic .policy-category-title { background: #4e9a56; color: #fff; }
+.policy-category--contact .policy-category-title { background: #c88a3a; color: #fff; }
+.policy-category--precise .policy-category-title { background: #b35a68; color: #fff; }
+
 .policy-cell {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
+}
+.policy-cell:last-child {
+  margin-bottom: 0.25rem;
 }
 
 .policy-cell-media {

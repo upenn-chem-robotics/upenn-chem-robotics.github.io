@@ -165,17 +165,8 @@
       <div class="container policy-results-container">
         <div class="short-horizon-grid">
 
-          <div class="policy-category">
+          <div class="policy-category policy-category--pick">
             <div class="policy-category-title">Pick-and-place</div>
-            <div class="policy-cell">
-              <div class="policy-cell-media">
-              <video controls playsinline muted loop autoplay preload="auto">
-                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/pick_vial_from_rack.mp4" type="video/mp4">
-              </video>
-              </div>
-              <p class="policy-cell-name">Pick vial from rack</p>
-              <p class="policy-cell-rate">Success: 100% (20/20)</p>
-            </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
               <video controls playsinline muted loop autoplay preload="auto">
@@ -183,7 +174,7 @@
               </video>
               </div>
               <p class="policy-cell-name">Pick vial and place on rack</p>
-              <p class="policy-cell-rate">Success: 80% (16/20)</p>
+              <p class="policy-cell-rate">Success: 80%</p>
             </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
@@ -192,7 +183,7 @@
               </video>
               </div>
               <p class="policy-cell-name">Insert funnel into flask</p>
-              <p class="policy-cell-rate">Success: 75% (15/20)</p>
+              <p class="policy-cell-rate">Success: 75%</p>
             </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
@@ -201,11 +192,20 @@
               </video>
               </div>
               <p class="policy-cell-name">Drop stir bar into flask</p>
-              <p class="policy-cell-rate">Success: 75% (15/20)</p>
+              <p class="policy-cell-rate">Success: 75%</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/pick_vial_from_rack.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Pick vial from rack</p>
+              <p class="policy-cell-rate">Success: 100%</p>
             </div>
           </div>
 
-          <div class="policy-category">
+          <div class="policy-category policy-category--dynamic">
             <div class="policy-category-title">Dynamic execution</div>
             <div class="policy-cell">
               <div class="policy-cell-media">
@@ -214,7 +214,7 @@
               </video>
               </div>
               <p class="policy-cell-name">Pour liquid</p>
-              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+              <p class="policy-cell-rate">Success: 95%</p>
             </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
@@ -223,7 +223,7 @@
               </video>
               </div>
               <p class="policy-cell-name">Dose solid</p>
-              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+              <p class="policy-cell-rate">Success: 95%</p>
             </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
@@ -232,21 +232,12 @@
               </video>
               </div>
               <p class="policy-cell-name">Scoop powder</p>
-              <p class="policy-cell-rate">Success: 30% (6/20)</p>
+              <p class="policy-cell-rate">Success: 30%</p>
             </div>
           </div>
 
-          <div class="policy-category">
+          <div class="policy-category policy-category--contact">
             <div class="policy-category-title">Contact-rich manipulation</div>
-            <div class="policy-cell">
-              <div class="policy-cell-media">
-              <video controls playsinline muted loop autoplay preload="auto">
-                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/aspirate_dispense.mp4" type="video/mp4">
-              </video>
-              </div>
-              <p class="policy-cell-name">Aspirate &amp; dispense liquid</p>
-              <p class="policy-cell-rate">Success: 95% (19/20)</p>
-            </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
               <video controls playsinline muted loop autoplay preload="auto">
@@ -254,7 +245,7 @@
               </video>
               </div>
               <p class="policy-cell-name">Cap vial</p>
-              <p class="policy-cell-rate">Success: 35% (7/20)</p>
+              <p class="policy-cell-rate">Success: 35%</p>
             </div>
             <div class="policy-cell">
               <div class="policy-cell-media">
@@ -263,21 +254,21 @@
               </video>
               </div>
               <p class="policy-cell-name">Uncap vial</p>
-              <p class="policy-cell-rate">Success: 95% (19/20)</p>
+              <p class="policy-cell-rate">Success: 95%</p>
             </div>
-          </div>
-
-          <div class="policy-category">
-            <div class="policy-category-title">Precise manipulation</div>
             <div class="policy-cell">
               <div class="policy-cell-media">
               <video controls playsinline muted loop autoplay preload="auto">
-                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/insert_needle.mp4" type="video/mp4">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/aspirate_dispense.mp4" type="video/mp4">
               </video>
               </div>
-              <p class="policy-cell-name">Insert needle into vial</p>
-              <p class="policy-cell-rate">Success: 75% (15/20)</p>
+              <p class="policy-cell-name">Aspirate &amp; dispense liquid</p>
+              <p class="policy-cell-rate">Success: 95%</p>
             </div>
+          </div>
+
+          <div class="policy-category policy-category--precise">
+            <div class="policy-category-title">Precise manipulation</div>
             <div class="policy-cell">
               <div class="policy-cell-media">
               <video controls playsinline muted loop autoplay preload="auto">
@@ -285,7 +276,16 @@
               </video>
               </div>
               <p class="policy-cell-name">Press septum into flask</p>
-              <p class="policy-cell-rate">Success: 40% (8/20)</p>
+              <p class="policy-cell-rate">Success: 40%</p>
+            </div>
+            <div class="policy-cell">
+              <div class="policy-cell-media">
+              <video controls playsinline muted loop autoplay preload="auto">
+                <source src="https://github.com/upenn-chem-robotics/upenn-chem-robotics.github.io/releases/download/short-horizon-videos-v1/insert_needle.mp4" type="video/mp4">
+              </video>
+              </div>
+              <p class="policy-cell-name">Insert needle into vial</p>
+              <p class="policy-cell-rate">Success: 75%</p>
             </div>
           </div>
 
