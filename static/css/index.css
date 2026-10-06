@@ -302,7 +302,7 @@ body {
 
 /* "Autonomous 1x" overlay badge on every policy video */
 .policy-cell-media::after {
-  content: "Autonomous 1\00D7";
+  content: "Autonomous 1.5\00D7";
   position: absolute;
   bottom: 6px;
   left: 6px;
