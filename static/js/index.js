@@ -68,15 +68,24 @@ $(document).ready(function() {
         });
       }, {root: null, rootMargin: '200px 0px', threshold: 0});
 
+      // Fresh-start a video: reset playback position + loop counter + stopped flag.
+      function restart(video) {
+        var cell = video.closest('.policy-cell-media');
+        video.dataset.loops = '0';
+        delete video.dataset.stopped;
+        if (cell) cell.classList.remove('policy-cell-media--stopped');
+        try { video.currentTime = 0; } catch (e) {}
+        video.play().catch(function() {});
+      }
+
       // Only play videos actually in the viewport. Pause everything else so the
       // browser isn't decoding 12 streams at once (which causes stutter over time).
+      // Each time a tile re-enters view, it starts from the beginning.
       var playObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
           if (entry.isIntersecting) {
-            if (!video.dataset.stopped) {
-              video.play().catch(function() {});
-            }
+            restart(video);
           } else {
             video.pause();
           }
@@ -111,11 +120,7 @@ $(document).ready(function() {
           cell.addEventListener('click', function(e) {
             if (video.dataset.stopped) {
               e.preventDefault();
-              video.dataset.loops = '0';
-              delete video.dataset.stopped;
-              cell.classList.remove('policy-cell-media--stopped');
-              video.currentTime = 0;
-              video.play().catch(function() {});
+              restart(video);
             }
           });
         }
@@ -124,16 +129,16 @@ $(document).ready(function() {
         playObserver.observe(video);
       });
 
-      // Pause everything when the tab is hidden; resume visible ones when it returns.
+      // Pause everything when the tab is hidden; restart visible ones from the
+      // beginning when the tab comes back.
       document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
           policyVideos.forEach(function(v) { v.pause(); });
         } else {
           policyVideos.forEach(function(v) {
-            if (v.dataset.stopped) return;
             var r = v.getBoundingClientRect();
             var inView = r.top < window.innerHeight && r.bottom > 0;
-            if (inView) v.play().catch(function() {});
+            if (inView) restart(v);
           });
         }
       });
