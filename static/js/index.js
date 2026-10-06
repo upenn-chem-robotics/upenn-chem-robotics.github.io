@@ -52,7 +52,23 @@ $(document).ready(function() {
 
     var policyVideos = document.querySelectorAll('.policy-cell-media video');
     if ('IntersectionObserver' in window && policyVideos.length) {
-      var policyObserver = new IntersectionObserver(function(entries) {
+      // Preload (download) videos a bit before they enter the viewport so there's
+      // enough buffer for smooth real-time playback instead of mid-rollout stalls.
+      var preloadObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var video = entry.target;
+            if (video.preload !== 'auto') {
+              video.preload = 'auto';
+              try { video.load(); } catch (e) {}
+            }
+            preloadObserver.unobserve(video);
+          }
+        });
+      }, {root: null, rootMargin: '400px 0px', threshold: 0});
+
+      // Play when visible, pause when fully offscreen.
+      var playObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
           if (entry.isIntersecting) {
@@ -62,8 +78,10 @@ $(document).ready(function() {
           }
         });
       }, {root: null, threshold: 0.25});
+
       policyVideos.forEach(function(video) {
-        policyObserver.observe(video);
+        preloadObserver.observe(video);
+        playObserver.observe(video);
       });
     }
 

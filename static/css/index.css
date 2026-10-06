@@ -290,6 +290,7 @@ body {
 }
 
 .policy-cell-media {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   min-height: 150px;
@@ -297,6 +298,25 @@ body {
   border: 1px solid #d4d4d4;
   background: #111;
   overflow: hidden;
+}
+
+/* "Autonomous 1x" overlay badge on every policy video */
+.policy-cell-media::after {
+  content: "Autonomous 1\00D7";
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .policy-cell-media--wide {
