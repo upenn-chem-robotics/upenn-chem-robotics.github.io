@@ -69,7 +69,9 @@ $(document).ready(function() {
       }
 
       // Update the top-center step overlay for a LH video based on currentTime.
-      // Steps come from a data-steps JSON attribute: [{t: seconds, label: "..."}].
+      // Steps come from a data-steps JSON attribute:
+      //   [{t: seconds, label: "...", failed?: true}]
+      // When a step has failed:true, a red "Attempt failed" chip is appended.
       function updateStepOverlay(video) {
         var cell = cellOf(video);
         if (!cell) return;
@@ -78,14 +80,27 @@ $(document).ready(function() {
         var steps = video._steps;
         if (!steps || !steps.length) return;
         var t = video.currentTime;
-        var active = null;
+        var activeIdx = -1;
         for (var i = 0; i < steps.length; i++) {
-          if (steps[i].t <= t + 0.02) active = steps[i];
+          if (steps[i].t <= t + 0.02) activeIdx = i;
           else break;
         }
-        var text = active ? active.label : '';
-        if (overlay.textContent !== text) overlay.textContent = text;
-        overlay.classList.toggle('is-visible', !!text);
+        if (overlay._stepIdx === activeIdx) return; // no change -> skip DOM work
+        overlay._stepIdx = activeIdx;
+        while (overlay.firstChild) overlay.removeChild(overlay.firstChild);
+        if (activeIdx < 0) {
+          overlay.classList.remove('is-visible');
+          return;
+        }
+        var step = steps[activeIdx];
+        overlay.appendChild(document.createTextNode(step.label));
+        if (step.failed) {
+          var chip = document.createElement('span');
+          chip.className = 'lh-step-fail-chip';
+          chip.textContent = 'Attempt failed';
+          overlay.appendChild(chip);
+        }
+        overlay.classList.add('is-visible');
       }
 
       // Fresh-start a video: reset playback position + loop counter + stopped flag.
