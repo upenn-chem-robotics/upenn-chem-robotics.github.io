@@ -233,8 +233,8 @@ body {
 .short-horizon-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
-  align-items: start;
+  gap: 1rem;
+  align-items: stretch; /* equal column heights so colored tints align */
 }
 
 @media (max-width: 1024px) {
@@ -250,7 +250,9 @@ body {
 }
 
 .policy-category {
-  padding: 0.6rem 0.65rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 0.65rem 0.75rem;
   border-radius: 10px;
   background: transparent;
 }
@@ -264,41 +266,42 @@ body {
   color: #333;
   border-radius: 6px;
   padding: 0.55rem 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   letter-spacing: 0.01em;
 }
 
-/* Per-category color palette: soft tint on column + bolder banner */
-.policy-category--pick    { background: #eef4fa; }
-.policy-category--dynamic { background: #edf7ee; }
-.policy-category--contact { background: #fdf4e5; }
-.policy-category--precise { background: #faeef0; }
+/* Per-category palette (left-to-right progression):
+   steel blue  ->  sky blue  ->  coral  ->  charcoal                   */
+.policy-category--pick    { background: #e8edf4; }
+.policy-category--dynamic { background: #e4f3f7; }
+.policy-category--contact { background: #fdeee8; }
+.policy-category--precise { background: #e3e5ea; }
 
-.policy-category--pick    .policy-category-title { background: #3f7cb6; color: #fff; }
-.policy-category--dynamic .policy-category-title { background: #4e9a56; color: #fff; }
-.policy-category--contact .policy-category-title { background: #c88a3a; color: #fff; }
-.policy-category--precise .policy-category-title { background: #b35a68; color: #fff; }
+.policy-category--pick    .policy-category-title { background: #3a4f6c; color: #fff; }
+.policy-category--dynamic .policy-category-title { background: #5a9ab5; color: #fff; }
+.policy-category--contact .policy-category-title { background: #e86a4e; color: #fff; }
+.policy-category--precise .policy-category-title { background: #263040; color: #fff; }
 
 .policy-cell {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 .policy-cell:last-child {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
 }
 
 .policy-cell-media {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  min-height: 220px;
+  aspect-ratio: 16 / 9;
+  min-height: 150px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #d4d4d4;
   background: #111;
   overflow: hidden;
 }
 
 .policy-cell-media--wide {
   aspect-ratio: 77 / 40;
-  min-height: 200px;
+  min-height: 160px;
 }
 
 .policy-cell-media video {
