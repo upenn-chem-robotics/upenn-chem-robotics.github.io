@@ -303,15 +303,26 @@
       </div>
 
       <div class="columns is-centered lh-grid">
-        <!-- Synthesis (placeholder) -->
+        <!-- Synthesis: reaction setup -->
         <div class="column is-one-third">
           <div class="lh-cell">
-            <div class="lh-cell-media lh-cell-media--placeholder">
-              <div class="lh-placeholder-text">Coming soon</div>
+            <div class="lh-cell-media policy-cell-media--3x">
+              <video controls playsinline muted autoplay preload="metadata"
+                     data-steps='[
+                       {"t": 0.00,  "label": "1. Drop stir bar into flask"},
+                       {"t": 8.67,  "label": "2. Insert funnel into flask"},
+                       {"t": 19.67, "label": "3. Dose solid"},
+                       {"t": 31.67, "label": "4. Pour liquid"},
+                       {"t": 44.67, "label": "5. Remove funnel"},
+                       {"t": 52.00, "label": "6. Press septum into flask"}
+                     ]'>
+                <source src="https://cdn.jsdelivr.net/gh/upenn-chem-robotics/short-horizon-media@77e822f420/lh1_synthesis.mp4" type="video/mp4">
+              </video>
+              <div class="lh-step-overlay"></div>
             </div>
             <p class="lh-cell-title">
               Synthesis<br>
-              <span class="lh-cell-subtitle">(coming soon)</span>
+              <span class="lh-cell-subtitle">(reaction setup)</span>
             </p>
           </div>
         </div>
@@ -329,7 +340,7 @@
                        {"t": 37.33, "label": "5. Remove funnel"},
                        {"t": 45.33, "label": "6. Place stopper into separatory funnel"}
                      ]'>
-                <source src="https://cdn.jsdelivr.net/gh/upenn-chem-robotics/short-horizon-media@2c691149cc/lh2_purification.mp4" type="video/mp4">
+                <source src="https://cdn.jsdelivr.net/gh/upenn-chem-robotics/short-horizon-media@77e822f420/lh2_purification.mp4" type="video/mp4">
               </video>
               <div class="lh-step-overlay"></div>
             </div>
@@ -351,13 +362,13 @@
                        {"t": 16.67, "label": "3. Press filter paper flat with rod"},
                        {"t": 28.00, "label": "4. Pour slurry into funnel"}
                      ]'>
-                <source src="https://cdn.jsdelivr.net/gh/upenn-chem-robotics/short-horizon-media@2c691149cc/lh3_isolation.mp4" type="video/mp4">
+                <source src="https://cdn.jsdelivr.net/gh/upenn-chem-robotics/short-horizon-media@77e822f420/lh3_isolation.mp4" type="video/mp4">
               </video>
               <div class="lh-step-overlay"></div>
             </div>
             <p class="lh-cell-title">
               Isolation<br>
-              <span class="lh-cell-subtitle">(B&uuml;chner filtration)</span>
+              <span class="lh-cell-subtitle">(filtration)</span>
             </p>
           </div>
         </div>
