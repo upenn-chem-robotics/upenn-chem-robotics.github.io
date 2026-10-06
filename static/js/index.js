@@ -68,11 +68,15 @@ $(document).ready(function() {
       }, {root: null, rootMargin: '400px 0px', threshold: 0});
 
       // Play when visible, pause when fully offscreen.
+      // Stagger starts across visible videos so their decode/paint ticks don't
+      // all line up on the same frame (reduces peak CPU/GPU load on 12 clips).
+      var staggerIdx = 0;
       var playObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
           if (entry.isIntersecting) {
-            video.play().catch(function() {});
+            var delay = (staggerIdx++ % 6) * 120;
+            setTimeout(function() { video.play().catch(function() {}); }, delay);
           } else {
             video.pause();
           }
