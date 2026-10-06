@@ -300,7 +300,8 @@ body {
   overflow: hidden;
 }
 
-/* "Autonomous 1x" overlay badge on every policy video */
+/* "Autonomous Nx" overlay badge on every policy video.
+   Default = 1.5x; cells tagged .policy-cell-media--2x get 2x instead. */
 .policy-cell-media::after {
   content: "Autonomous 1.5\00D7";
   position: absolute;
@@ -317,6 +318,10 @@ body {
   line-height: 1.3;
   pointer-events: none;
   z-index: 2;
+}
+
+.policy-cell-media--2x::after {
+  content: "Autonomous 2\00D7";
 }
 
 .policy-cell-media--wide {
