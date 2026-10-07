@@ -203,6 +203,17 @@ body {
   scroll-margin-top: 16px;
 }
 
+/* Lighter, smaller robotics-term tag next to chemist-friendly section titles.
+   e.g. "Single skills (short horizon)" */
+.horizon-tag {
+  display: inline-block;
+  margin-left: 6px;
+  color: #6b7280;
+  font-size: 0.7em;
+  font-weight: 400;
+  font-style: italic;
+}
+
 @media (max-width: 1180px) {
   .toc {
     display: none;
