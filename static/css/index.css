@@ -174,25 +174,19 @@ body {
   line-height: 1.35;
 }
 
-.toc ol {
+.toc ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  counter-reset: toc-item;
 }
 
-.toc > ol > li {
-  counter-increment: toc-item;
+.toc li {
   margin-bottom: 8px;
 }
 
 .toc a {
   color: #9a9a9a;
   text-decoration: none;
-}
-
-.toc > ol > li > a::before {
-  content: counter(toc-item) ". ";
 }
 
 .toc a:hover,
@@ -202,17 +196,6 @@ body {
 
 .toc a.active {
   font-weight: 600;
-}
-
-.toc ol ol {
-  margin-top: 3px;
-  padding-left: 16px;
-}
-
-.toc ol ol a {
-  display: block;
-  font-size: 13px;
-  margin: 2px 0;
 }
 
 .section[id],
