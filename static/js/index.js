@@ -56,7 +56,7 @@ $(document).ready(function() {
     );
 
     if ('IntersectionObserver' in window && autonomousVideos.length) {
-      var MAX_LOOPS = 5; // stop auto-looping after N iterations to avoid long-run decoder exhaustion
+      var MAX_LOOPS = 3; // stop auto-looping after N iterations to avoid long-run decoder exhaustion
 
       // Find the parent cell wrapper (policy or long-horizon) for a given video.
       function cellOf(video) {
@@ -103,8 +103,29 @@ $(document).ready(function() {
         overlay.classList.add('is-visible');
       }
 
+      // --- Decoder teardown ---------------------------------------------------
+      // Browsers keep a hardware video decoder + GPU textures allocated for every
+      // <video> element whose src is set, even when paused. Over time (many
+      // tiles, long sessions) this accumulates and causes stutter.
+      // Fix: for tiles far from the viewport, remove the <source src> and call
+      // load() to fully release the decoder. Re-attach when near-viewport again.
+      function attachSrc(video) {
+        var source = video.querySelector('source');
+        if (!source || source.getAttribute('src')) return;
+        source.setAttribute('src', video.dataset.origSrc || '');
+        try { video.load(); } catch (e) {}
+      }
+      function detachSrc(video) {
+        var source = video.querySelector('source');
+        if (!source || !source.getAttribute('src')) return;
+        video.pause();
+        source.removeAttribute('src');
+        try { video.load(); } catch (e) {}
+      }
+
       // Fresh-start a video: reset playback position + loop counter + stopped flag.
       function restart(video) {
+        attachSrc(video); // make sure decoder is alive before we try to play
         var cell = cellOf(video);
         video.dataset.loops = '0';
         delete video.dataset.stopped;
@@ -114,23 +135,21 @@ $(document).ready(function() {
         video.play().catch(function() {});
       }
 
-      // Preload videos just before they scroll into view so the first frame is ready.
-      var preloadObserver = new IntersectionObserver(function(entries) {
+      // Attach zone (wide): keep decoder alive only for near-viewport tiles.
+      var attachObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
+          var video = entry.target;
           if (entry.isIntersecting) {
-            var video = entry.target;
-            if (video.preload !== 'auto') {
-              video.preload = 'auto';
-              try { video.load(); } catch (e) {}
-            }
-            preloadObserver.unobserve(video);
+            attachSrc(video);
+          } else {
+            detachSrc(video);
           }
         });
-      }, {root: null, rootMargin: '200px 0px', threshold: 0});
+      }, {root: null, rootMargin: '400px 0px', threshold: 0});
 
-      // Only play videos actually in the viewport. Pause everything else so the
-      // browser isn't decoding many streams at once (which causes stutter over time).
-      // Each time a tile re-enters view, it starts from the beginning.
+      // Play zone (narrow): only well-centered tiles play; others just pause.
+      // Threshold 0.75 means at least 75% of the tile must be in view -> on a
+      // big monitor you'll rarely have more than ~3 running at once.
       var playObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
@@ -140,11 +159,15 @@ $(document).ready(function() {
             video.pause();
           }
         });
-      }, {root: null, threshold: 0.5});
+      }, {root: null, threshold: 0.75});
 
       autonomousVideos.forEach(function(video) {
         video.dataset.loops = '0';
         var cell = cellOf(video);
+
+        // Capture the HTML-declared source so attach/detach can restore it.
+        var source = video.querySelector('source');
+        if (source) video.dataset.origSrc = source.getAttribute('src');
 
         // Parse data-steps once and attach to the element.
         var raw = video.getAttribute('data-steps');
@@ -193,7 +216,7 @@ $(document).ready(function() {
           });
         }
 
-        preloadObserver.observe(video);
+        attachObserver.observe(video);
         playObserver.observe(video);
       });
 
