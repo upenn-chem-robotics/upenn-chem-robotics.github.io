@@ -519,3 +519,71 @@ body {
   text-align: center;
   color: #555;
 }
+
+/* --- Code & Resources cards --- */
+.code-cards {
+  align-items: stretch;
+}
+
+.code-cards .column {
+  display: flex;
+}
+
+.code-card {
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.code-card .card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 1.5rem;
+}
+
+.code-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.code-card-title {
+  margin-bottom: 0 !important;
+  font-family: 'Google Sans', sans-serif;
+}
+
+.code-card-subtitle {
+  flex: 1 1 auto;
+  font-family: 'Noto Sans', sans-serif;
+  color: #4a4a4a;
+  margin-bottom: 1.25rem !important;
+}
+
+.code-card-tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: #1f6feb;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.code-card-tag--hw {
+  background: #2ea043;
+}

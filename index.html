@@ -30,6 +30,7 @@
     <li><a href="#data">Data</a></li>
     <li><a href="#failure">Failure</a></li>
     <li><a href="#method">Method</a></li>
+    <li><a href="#code">Code</a></li>
     <li><a href="#takeaways">Take aways</a></li>
   </ul>
 </nav>
@@ -61,13 +62,13 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#data" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://huggingface.co/WetLabRoboData" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-database"></i></span>
                   <span>Data</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/RamaChem/lerobot_ros2" class="external-link button is-normal is-rounded is-dark">
+                <a href="#code" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
@@ -79,7 +80,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="#results" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://docs.google.com/spreadsheets/d/1Vj2g28cYx5H4QImI2QHpTs2x2G3fvmbn/edit?gid=1488759957#gid=1488759957" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-excel"></i></span>
                   <span>Results</span>
                 </a>
@@ -453,6 +454,60 @@
           <p>
             Think of it like a chemist learning a new titration technique: you observe the setup, remember your training, and continuously adjust your hand movements based on the color change in the flask.
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light" id="code">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Code &amp; Resources</h2>
+    <p class="has-text-centered" style="margin-bottom: 2rem; max-width: 820px; margin-left: auto; margin-right: auto;">
+      The stack is split into two repositories: a ROS&nbsp;2 package for the bimanual UR3 + Robotiq hardware,
+      and a Docker-first application layer for teleoperation, dataset recording, policy training, and deployment.
+    </p>
+
+    <div class="columns is-centered code-cards">
+      <div class="column is-half">
+        <div class="card code-card">
+          <div class="card-content">
+            <div class="code-card-header">
+              <p class="title is-5 code-card-title">lerobot_ros2</p>
+              <span class="code-card-tag">Application stack</span>
+            </div>
+            <p class="subtitle is-6 code-card-subtitle">
+              Docker-first ROS&nbsp;2 Humble tooling for bimanual teleoperation, LeRobot dataset
+              recording and transformation, policy training, deployment, and DAgger workflows.
+            </p>
+            <a class="button is-dark is-fullwidth is-rounded"
+               href="https://github.com/upenn-chem-robotics/lerobot_ros2"
+               target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="card code-card">
+          <div class="card-content">
+            <div class="code-card-header">
+              <p class="title is-5 code-card-title">ur_robotiq</p>
+              <span class="code-card-tag code-card-tag--hw">Hardware driver</span>
+            </div>
+            <p class="subtitle is-6 code-card-subtitle">
+              ROS&nbsp;2 package for the bimanual UR3 + Robotiq&nbsp;2F-85 setup: combined URDF,
+              ros2_control configuration, GELLO teleoperation node, and hand&ndash;eye calibration tooling.
+            </p>
+            <a class="button is-dark is-fullwidth is-rounded"
+               href="https://github.com/penzottimattia/ur_robotiq/tree/humble"
+               target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>GitHub</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
