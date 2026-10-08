@@ -374,6 +374,62 @@ body {
   font-style: italic;
 }
 
+/* Mini horizontal bar chart: scratch vs fine-tuned success rate under each
+   long-horizon tile. All percentages share the same 0-100 scale across tiles. */
+.lh-progress {
+  margin-top: 10px;
+  padding: 0 4px;
+}
+
+.lh-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.72rem;
+}
+
+.lh-progress-row:last-child {
+  margin-bottom: 0;
+}
+
+.lh-progress-label {
+  flex: 0 0 64px;
+  color: #4a5568;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.lh-progress-track {
+  flex: 1 1 auto;
+  height: 9px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lh-progress-bar {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.lh-progress-bar--scratch {
+  background: #94a3b8; /* slate / muted */
+}
+
+.lh-progress-bar--finetuned {
+  background: #3a4f6c; /* matches pick-and-place column accent */
+}
+
+.lh-progress-value {
+  flex: 0 0 38px;
+  color: #1f2937;
+  font-weight: 600;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Top-center subtask overlay (JS fills the text). */
 .lh-step-overlay {
   position: absolute;
