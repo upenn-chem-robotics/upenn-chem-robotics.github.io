@@ -381,6 +381,17 @@ body {
   padding: 0 4px;
 }
 
+.lh-progress-header {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
 .lh-progress-row {
   display: flex;
   align-items: center;
