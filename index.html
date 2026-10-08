@@ -290,17 +290,27 @@
       </h3>
       <div class="content">
         <p>
-          Long-horizon procedures &mdash; synthesis, purification, isolation &mdash; sit at the heart of bench chemistry. Automating them with a single learned policy is hard not because any individual motion is unique, but because the robot must stay on-task for <strong>1&ndash;3 minutes of continuous action</strong>. Our Diffusion Policy is <em>memoryless</em>: it picks each move from the current camera view, with no explicit record of past steps. Over dozens of sub-steps, tiny execution errors compound &mdash; a slightly off grasp puts the arm in a configuration never seen during training, the policy drifts out of distribution, and the full run collapses.
+          A chemistry experiment moves through three multi-step workflows &mdash; synthesis, purification, and isolation &mdash; to turn starting materials into an isolated product. A bench chemist spends hours per day running these three workflows. A learned policy that completes any one of them end-to-end frees that time.
         </p>
         <p>
-          We evaluate three complete bench procedures &mdash; <strong>Synthesis</strong> (reaction setup, 2&nbsp;min 49&nbsp;s), <strong>Purification</strong> (liquid&ndash;liquid extraction, 2&nbsp;min 37&nbsp;s), and <strong>Isolation</strong> (filtration, 1&nbsp;min 52&nbsp;s). Each policy is trained on the <strong>entire video of a procedure, not on stitched subtask clips</strong>. We compare two training regimes:
+          Each workflow runs 1&nbsp;to&nbsp;3 minutes of continuous action &mdash; fifteen to forty subtasks in sequence. One diffusion policy must drive the full run from a single camera stream. Two failure modes compound each other:
         </p>
         <ul>
-          <li><strong>Scratch:</strong> train only on the episodes recorded for that specific procedure (47 for Synthesis, 51 for Purification, 34 for Isolation). <strong>0&ndash;5%</strong> success &mdash; essentially unusable.</li>
-          <li><strong>Fine-tuned:</strong> start from a policy pre-trained on the mix of our 12 single-skill datasets, then fine-tune on the same long-horizon episodes. <strong>15&ndash;35%</strong> success &mdash; from unusable to functional with the same handful of demonstrations.</li>
+          <li><strong>No explicit memory.</strong> The policy picks each action from the current camera frame. The policy cannot tell step&nbsp;4 (just finished) from step&nbsp;4 (still pending) when the arms return to the home position.</li>
+          <li><strong>Compounding error.</strong> A grasp off by 2&nbsp;mm at step&nbsp;5 shifts the arm into a configuration never seen during training. The policy drifts out of distribution and the full run collapses.</li>
         </ul>
         <p>
-          Within each procedure, individual subtasks fall into three categories relative to the fine-tuning data: <strong>within dataset</strong> (directly represented), <strong>partially seen</strong> (some novel elements, familiar motions), and <strong>outside dataset</strong> (novel composition, but same labware and workspace layout seen during training).
+          We test three bench workflows end-to-end: <strong>Synthesis</strong> (reaction setup, 2&nbsp;min 49&nbsp;s), <strong>Purification</strong> (liquid&ndash;liquid extraction, 2&nbsp;min 37&nbsp;s), and <strong>Isolation</strong> (filtration, 1&nbsp;min 52&nbsp;s). We train one policy per workflow on the complete procedure video, not on stitched subtask clips. We compare two training recipes across 20&nbsp;trials per policy:
+        </p>
+        <ul>
+          <li><strong>Scratch:</strong> train only on the long-horizon episodes recorded for that workflow (47&nbsp;/&nbsp;51&nbsp;/&nbsp;34 for Synthesis&nbsp;/&nbsp;Purification&nbsp;/&nbsp;Isolation). 0&ndash;5% success.</li>
+          <li><strong>Fine-tuned:</strong> pre-train on the mix of 12 single-skill datasets (<em>[XX episodes total &mdash; TBD]</em>), then fine-tune on the same long-horizon episodes. 15&ndash;35% success.</li>
+        </ul>
+        <p>
+          Each workflow stresses the fine-tuning data differently. Synthesis subtasks sit inside the single-skill dataset; Purification subtasks are partially covered (familiar motions, new liquids and labware); Isolation subtasks sit outside the dataset but reuse the same labware and workspace layout seen during training.
+        </p>
+        <p>
+          The fine-tune recipe lifts end-to-end yield from 0% to 15&ndash;35% from the same long-horizon demonstrations.
         </p>
       </div>
 
@@ -327,7 +337,7 @@
               <span class="lh-cell-subtitle">(reaction setup)</span>
             </p>
             <div class="lh-progress">
-              <div class="lh-progress-header">Success rate (over 20 trials)</div>
+              <div class="lh-progress-header">Success rate</div>
               <div class="lh-progress-row">
                 <span class="lh-progress-label">Scratch</span>
                 <div class="lh-progress-track"><div class="lh-progress-bar lh-progress-bar--scratch" style="width: 0%"></div></div>
@@ -364,7 +374,7 @@
               <span class="lh-cell-subtitle">(liquid&ndash;liquid extraction)</span>
             </p>
             <div class="lh-progress">
-              <div class="lh-progress-header">Success rate (over 20 trials)</div>
+              <div class="lh-progress-header">Success rate</div>
               <div class="lh-progress-row">
                 <span class="lh-progress-label">Scratch</span>
                 <div class="lh-progress-track"><div class="lh-progress-bar lh-progress-bar--scratch" style="width: 5%"></div></div>
@@ -399,7 +409,7 @@
               <span class="lh-cell-subtitle">(filtration)</span>
             </p>
             <div class="lh-progress">
-              <div class="lh-progress-header">Success rate (over 20 trials)</div>
+              <div class="lh-progress-header">Success rate</div>
               <div class="lh-progress-row">
                 <span class="lh-progress-label">Scratch</span>
                 <div class="lh-progress-track"><div class="lh-progress-bar lh-progress-bar--scratch" style="width: 0%"></div></div>
