@@ -423,21 +423,80 @@
 <section class="section" id="data">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Data</h2>
-    
-    <div class="content">
-      <h3 class="title is-4">Dataset Statistics</h3>
-      <ul>
-        <li><strong>Total Episodes:</strong> [X] episodes</li>
-        <li><strong>Total Hours:</strong> [Y] hours of teleoperation</li>
-        <li><strong>Task Range:</strong> From simple pick-and-place to complex tool use.</li>
-      </ul>
 
-      <h3 class="title is-4">Data Collection for Physical AI</h3>
-      <p><strong>How to collect data interesting for physical AI?</strong> High-fidelity data requires synchronized multi-view cameras, low-latency teleoperation, and a diverse set of initial conditions to ensure the policy generalizes.</p>
-      
-      <p><strong>What makes data useful?</strong> Useful data captures not just the successful completion of a task, but the subtle corrective movements made by the human operator. It should cover edge cases and varied environments.</p>
-      
-      <p><strong>Evaluation Benchmark:</strong> We demonstrate that starting with our dataset is highly useful for the community. We provide benchmarks on overall success rates and success rates per motion (e.g., picking is highly reliable, while task-specific tool use requires more precision).</p>
+    <p class="data-lede has-text-centered">
+      We offer the largest open-sourced, real-world robot dataset in wet laboratories.
+    </p>
+
+    <div class="data-table-wrap">
+      <p class="data-table-caption">
+        <strong>Table 1:</strong> Comparison of our dataset with other robotic manipulation datasets and benchmarks in wet laboratories.
+      </p>
+      <table class="data-benchmark-table">
+        <thead>
+          <tr>
+            <th rowspan="2">Dataset / Benchmark</th>
+            <th rowspan="2">Real Robot Data</th>
+            <th rowspan="2">Bimanual</th>
+            <th colspan="2" class="th-group">Task Diversity</th>
+            <th rowspan="2">Open Dataset Scale (Hours)</th>
+          </tr>
+          <tr>
+            <th>Short horizon (&lt;1&nbsp;min)</th>
+            <th>Long horizon (&gt;1&nbsp;min)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-ours">
+            <td><strong>Ours</strong></td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td><strong>~22&nbsp;h</strong></td>
+          </tr>
+          <tr>
+            <td><a href="https://arxiv.org/abs/2608.18618" target="_blank" rel="noopener">LabDex</a></td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-no">&#10007;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-no">&#10007;</td>
+            <td>~14&nbsp;h</td>
+          </tr>
+          <tr>
+            <td><a href="https://arxiv.org/abs/2605.07306" target="_blank" rel="noopener">BioProVLA-Agent</a></td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-no">&#10007;</td>
+            <td>Not public</td>
+          </tr>
+          <tr>
+            <td><a href="https://arxiv.org/abs/2505.22634" target="_blank" rel="noopener">LabUtopia</a></td>
+            <td class="cell-no">&#10007;</td>
+            <td class="cell-no">&#10007;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td>N/A (Sim)</td>
+          </tr>
+          <tr>
+            <td><a href="https://arxiv.org/abs/2505.14030" target="_blank" rel="noopener">AutoBio</a></td>
+            <td class="cell-no">&#10007;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-no">&#10007;</td>
+            <td>~4.4&nbsp;h</td>
+          </tr>
+          <tr>
+            <td><a href="https://arxiv.org/abs/2406.08160" target="_blank" rel="noopener">Chemistry3D</a></td>
+            <td class="cell-no">&#10007;</td>
+            <td class="cell-no">&#10007;</td>
+            <td class="cell-yes">&#10003;</td>
+            <td class="cell-no">&#10007;</td>
+            <td>N/A (Sim)</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
