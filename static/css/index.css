@@ -690,10 +690,9 @@ body {
   border: 1px solid #e2e8f0;
 }
 
-/* Equal-width columns: 6 columns at ~16.67% each */
+/* Equal-width columns: 6 physical columns (widths set via <colgroup> in HTML) */
 .data-benchmark-table th,
 .data-benchmark-table td {
-  width: 16.6%;
   padding: 12px 4px;
   text-align: center;
   border-bottom: 1px solid #e2e8f0;
