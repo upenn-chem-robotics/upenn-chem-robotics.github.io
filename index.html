@@ -297,10 +297,10 @@
         </p>
         <ul>
           <li><strong>Scratch:</strong> train only on the long-horizon episodes recorded for that workflow (47&nbsp;/&nbsp;51&nbsp;/&nbsp;34 episodes for Synthesis&nbsp;/&nbsp;Purification&nbsp;/&nbsp;Isolation). Scratch training yields 0&ndash;5% success, as expected from compounding error.</li>
-          <li><strong>Fine-tuned:</strong> pre-train on the mix of 12 single-skill datasets (1,206 episodes), then fine-tune on the same long-horizon episodes. This recipe lifts end-to-end success from 0% to 15&ndash;35% using the same long-horizon demonstrations.</li>
+          <li><strong>Fine-tuned:</strong> pre-train on the mix of <a href="#short-horizon">12 single-skill datasets</a> (1,206 episodes), then fine-tune on the same long-horizon episodes. This recipe lifts end-to-end success from 0% to 15&ndash;35% using the same long-horizon demonstrations.</li>
         </ul>
         <p>
-          Fine-tuning succeeds even when long-horizon subtasks fall outside the pre-training distribution because the policy transfers knowledge of the shared hardware and workspace. We test this across three levels of distribution shift: Synthesis is fully in-distribution, Purification is partially out-of-distribution (new labware), and Isolation is completely out-of-distribution (novel tasks).
+          Fine-tuning succeeds even when long-horizon subtasks fall outside the pre-training. We test this across three levels of distribution shift: Synthesis is fully in-distribution, Purification is partially out-of-distribution (new labware), and Isolation is completely out-of-distribution (new labware).
         </p>
       </div>
 
