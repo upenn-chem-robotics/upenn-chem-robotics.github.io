@@ -150,7 +150,7 @@
       </h3>
       <div class="content" style="max-width: 850px; margin: 0 auto 1.5rem auto;">
         <p>
-          We train 12 independent policies (one per skill) using 70 to 120 human demonstrations each. These 12 skills span a wide range of complexity: from basic pick-and-place to dynamic execution, contact-rich tasks, and precision manipulation. We evaluate each policy across 20 trials, varying the starting and ending positions of the labware to ensure the robot relies on visual feedback rather than memorized coordinates (in-distribution, found in <a href="https://docs.google.com/spreadsheets/d/1Vj2g28cYx5H4QImI2QHpTs2x2G3fvmbn/edit?gid=1488759957#gid=1488759957" target="_blank">Results</a>). End-to-end success rates range from 30% to 100%. We define a short-horizon skill as a single chemistry operation that takes less than one minute.
+          We train 12 separate robot policies, one for each chemistry skill, using 70&ndash;120 human demonstrations per skill. The skills range in complexity from simple pick-and-place tasks to pouring liquids, handling powders, tightening vial caps, and precisely inserting needles. We evaluate each policy over 20 trials, varying the starting and end positions of the labware to test whether the robot can adapt to changes in the setup using visual feedback rather than relying on fixed positions (in-distribution, found in <a href="https://docs.google.com/spreadsheets/d/1Vj2g28cYx5H4QImI2QHpTs2x2G3fvmbn/edit?gid=1488759957#gid=1488759957" target="_blank">Results</a>). Task success rates range from 30% to 100%. We define a short-horizon skill as a single chemistry operation that takes less than one minute.
         </p>
       </div>
 
