@@ -655,6 +655,18 @@ body {
   background: #2ea043;
 }
 
+/* ---- Section TLDR: one-sentence summary under section titles ---- */
+.section-tldr {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: #1a202c;
+  font-weight: 500;
+  max-width: 780px;
+  margin: -0.5rem auto 1.5rem auto;
+  font-style: italic;
+}
+
 /* ---- Data section: lede sentence + stats grid + benchmark comparison table ---- */
 .data-lede {
   font-family: 'Google Sans', 'Noto Sans', sans-serif;
@@ -814,6 +826,51 @@ body {
   font-weight: 500;
   font-size: 0.85rem;
   margin-left: 4px;
+}
+
+/* ---- Data section: "What makes this dataset useful" bullets ---- */
+.data-highlights {
+  max-width: 720px;
+  margin: 2.25rem auto 0 auto;
+}
+
+.data-highlights .title.is-5 {
+  margin-bottom: 1rem;
+}
+
+.data-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.data-highlights-list li {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1a202c;
+  padding: 10px 0 10px 22px;
+  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.data-highlights-list li:last-child {
+  border-bottom: none;
+}
+
+.data-highlights-list li::before {
+  content: "\2713";
+  color: #15803d;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-size: 1rem;
+}
+
+.data-highlights-list li strong {
+  color: #1a202c;
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {

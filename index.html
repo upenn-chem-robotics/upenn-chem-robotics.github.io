@@ -290,6 +290,9 @@
         Multi-step workflow
         <span class="horizon-tag">(long horizon)</span>
       </h3>
+      <p class="section-tldr has-text-centered">
+        Fine-tuning a 12-skill pre-trained policy on a few long-horizon demonstrations enables success where from-scratch training fails.
+      </p>
       <div class="content">
         <p>
           A chemistry experiment moves through three multi-step workflows (synthesis, purification, and isolation) to turn starting materials into an isolated product. These multi-step workflows are challenging to automate with a single learned policy due to compounding error. Over dozens of sub-steps, tiny execution errors compound, the policy drifts out of distribution, and the run collapses. Deviation from the expert scales exponentially as the horizon increases.
@@ -532,6 +535,15 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="data-highlights">
+      <h3 class="title is-5 has-text-centered">What makes this dataset useful</h3>
+      <ul class="data-highlights-list">
+        <li><strong>Un-modelable materials.</strong> e.g., needles pierce deformable septa, liquids pour, powders dispense, caps compress onto screw threads.</li>
+        <li><strong>Visual challenges.</strong> Transparent glassware and clear liquids.</li>
+        <li><strong>Diverse manipulation.</strong> Inserting, rotating, scooping, pouring, dispensing, capping, tool switching.</li>
+      </ul>
     </div>
   </div>
 </section>
