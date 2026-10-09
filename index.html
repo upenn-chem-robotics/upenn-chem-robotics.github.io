@@ -290,27 +290,17 @@
       </h3>
       <div class="content">
         <p>
-          A chemistry experiment moves through three multi-step workflows &mdash; synthesis, purification, and isolation &mdash; to turn starting materials into an isolated product. A bench chemist spends hours per day running these three workflows. A learned policy that completes any one of them end-to-end frees that time.
+          A chemistry experiment moves through three multi-step workflows (synthesis, purification, and isolation) to turn starting materials into an isolated product. These workflows are challenging to automate with a single learned policy because of compounding error over multiple minutes of continuous action. Over dozens of sub-steps, tiny execution errors compound, the policy drifts out of distribution, and the run collapses. Deviation from the expert scales exponentially as the horizon increases.
         </p>
         <p>
-          Each workflow runs 1&nbsp;to&nbsp;3 minutes of continuous action &mdash; fifteen to forty subtasks in sequence. One diffusion policy must drive the full run from a single camera stream. Two failure modes compound each other:
-        </p>
-        <ul>
-          <li><strong>No explicit memory.</strong> The policy picks each action from the current camera frame. The policy cannot tell step&nbsp;4 (just finished) from step&nbsp;4 (still pending) when the arms return to the home position.</li>
-          <li><strong>Compounding error.</strong> A grasp off by 2&nbsp;mm at step&nbsp;5 shifts the arm into a configuration never seen during training. The policy drifts out of distribution and the full run collapses.</li>
-        </ul>
-        <p>
-          We test three bench workflows end-to-end: <strong>Synthesis</strong> (reaction setup, 2&nbsp;min 49&nbsp;s), <strong>Purification</strong> (liquid&ndash;liquid extraction, 2&nbsp;min 37&nbsp;s), and <strong>Isolation</strong> (filtration, 1&nbsp;min 52&nbsp;s). We train one policy per workflow on the complete procedure video, not on stitched subtask clips. We compare two training recipes across 20&nbsp;trials per policy:
+          We test three long-horizon workflows: <strong>Synthesis</strong> (reaction setup, 2&nbsp;min 49&nbsp;s), <strong>Purification</strong> (liquid&ndash;liquid extraction, 2&nbsp;min 37&nbsp;s), and <strong>Isolation</strong> (filtration, 1&nbsp;min 52&nbsp;s). We train one policy per workflow on the entire video, not on subtask clips. We compare two training recipes across 20 rollouts per policy:
         </p>
         <ul>
-          <li><strong>Scratch:</strong> train only on the long-horizon episodes recorded for that workflow (47&nbsp;/&nbsp;51&nbsp;/&nbsp;34 for Synthesis&nbsp;/&nbsp;Purification&nbsp;/&nbsp;Isolation). 0&ndash;5% success.</li>
-          <li><strong>Fine-tuned:</strong> pre-train on the mix of 12 single-skill datasets (<em>[XX episodes total &mdash; TBD]</em>), then fine-tune on the same long-horizon episodes. 15&ndash;35% success.</li>
+          <li><strong>Scratch:</strong> train only on the long-horizon episodes recorded for that workflow (47&nbsp;/&nbsp;51&nbsp;/&nbsp;34 episodes for Synthesis&nbsp;/&nbsp;Purification&nbsp;/&nbsp;Isolation). Scratch training yields 0&ndash;5% success, as expected from compounding error.</li>
+          <li><strong>Fine-tuned:</strong> pre-train on the mix of 12 single-skill datasets (1,206 episodes), then fine-tune on the same long-horizon episodes. This recipe lifts end-to-end success from 0% to 15&ndash;35% using the same long-horizon demonstrations.</li>
         </ul>
         <p>
-          Each workflow stresses the fine-tuning data differently. Synthesis subtasks sit inside the single-skill dataset; Purification subtasks are partially covered (familiar motions, new liquids and labware); Isolation subtasks sit outside the dataset but reuse the same labware and workspace layout seen during training.
-        </p>
-        <p>
-          The fine-tune recipe lifts end-to-end yield from 0% to 15&ndash;35% from the same long-horizon demonstrations.
+          Fine-tuning succeeds even when long-horizon subtasks fall outside the pre-training distribution because the policy transfers knowledge of the shared hardware and workspace. We test this across three levels of distribution shift: Synthesis is fully in-distribution, Purification is partially out-of-distribution (new labware), and Isolation is completely out-of-distribution (novel tasks).
         </p>
       </div>
 
