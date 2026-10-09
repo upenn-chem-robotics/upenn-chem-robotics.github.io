@@ -831,7 +831,7 @@ body {
 /* ---- Data section: "What makes this dataset useful" bullets ---- */
 .data-highlights {
   max-width: 720px;
-  margin: 2.25rem auto 0 auto;
+  margin: 2.25rem auto 3rem auto;
 }
 
 .data-highlights .title.is-5 {
