@@ -290,7 +290,7 @@
       </h3>
       <div class="content">
         <p>
-          A chemistry experiment moves through three multi-step workflows (synthesis, purification, and isolation) to turn starting materials into an isolated product. These workflows are challenging to automate with a single learned policy. Over multiple minutes and dozens of sub-steps, tiny execution errors compound, the policy drifts out of distribution, and the run collapses. Deviation from the expert scales exponentially as the horizon increases.
+          A chemistry experiment moves through three multi-step workflows (synthesis, purification, and isolation) to turn starting materials into an isolated product. These multi-step workflows are challenging to automate with a single learned policy due to compounding error. Over dozens of sub-steps, tiny execution errors compound, the policy drifts out of distribution, and the run collapses. Deviation from the expert scales exponentially as the horizon increases.
         </p>
         <p>
           We test three long-horizon workflows: <strong>Synthesis</strong> (reaction setup, 2&nbsp;min 49&nbsp;s), <strong>Purification</strong> (liquid&ndash;liquid extraction, 2&nbsp;min 37&nbsp;s), and <strong>Isolation</strong> (filtration, 1&nbsp;min 52&nbsp;s). We train one policy per workflow on the entire video, not on subtask clips. We compare two training recipes across 20 rollouts per policy:
