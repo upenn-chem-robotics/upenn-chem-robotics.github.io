@@ -655,15 +655,15 @@ body {
   background: #2ea043;
 }
 
-/* ---- Section TLDR: one-sentence summary under section titles ---- */
+/* ---- Section TLDR: one-sentence summary under section titles. Matches .data-lede size ---- */
 .section-tldr {
   font-family: 'Google Sans', 'Noto Sans', sans-serif;
-  font-size: 1.08rem;
-  line-height: 1.5;
+  font-size: 1.35rem;
+  line-height: 1.45;
   color: #1a202c;
   font-weight: 500;
-  max-width: 780px;
-  margin: -0.5rem auto 1.5rem auto;
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
   font-style: italic;
 }
 
@@ -874,7 +874,8 @@ body {
 }
 
 @media (max-width: 640px) {
-  .data-lede {
+  .data-lede,
+  .section-tldr {
     font-size: 1.1rem;
   }
   .data-benchmark-table {
