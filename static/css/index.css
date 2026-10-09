@@ -667,7 +667,7 @@ body {
 }
 
 .data-table-wrap {
-  max-width: 760px;
+  max-width: 540px;
   margin: 0 auto;
   overflow-x: auto;
 }
@@ -694,7 +694,7 @@ body {
 .data-benchmark-table th,
 .data-benchmark-table td {
   width: 16.6%;
-  padding: 12px 10px;
+  padding: 12px 4px;
   text-align: center;
   border-bottom: 1px solid #e2e8f0;
   vertical-align: middle;
