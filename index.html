@@ -148,9 +148,11 @@
         Single skills
         <span class="horizon-tag">(short horizon)</span>
       </h3>
-      <p class="has-text-centered" style="margin-bottom: 1.5rem; max-width: 850px; margin-left: auto; margin-right: auto;">
-        Twelve short-horizon policies grouped by primitive. Each cell shows an autonomous rollout played at the speed shown in its badge (<strong>1.5&times;</strong> or <strong>2&times;</strong> real time), with its measured success rate over <strong>20 trials</strong>. Across trials, we vary the starting positions of vials, flasks, and tools within the robot&rsquo;s workspace &mdash; the policy must locate the target before acting on it.
-      </p>
+      <div class="content" style="max-width: 850px; margin: 0 auto 1.5rem auto;">
+        <p>
+          We train 12 independent policies (one per skill) using 70 to 120 human demonstrations each. These 12 skills span a wide range of complexity: from basic pick-and-place to dynamic execution, contact-rich tasks, and precision manipulation. We evaluate each policy across 20 trials, varying the starting and ending positions of the labware to ensure the robot relies on visual feedback rather than memorized coordinates (in-distribution, found in <a href="#data">Results</a>). End-to-end success rates range from 30% to 100%. We define a short-horizon skill as a single chemistry operation that takes less than one minute.
+        </p>
+      </div>
 
       <div class="container policy-results-container">
         <div class="short-horizon-grid">
