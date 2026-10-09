@@ -683,32 +683,37 @@ body {
 .data-benchmark-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
   font-family: 'Google Sans', 'Noto Sans', sans-serif;
   font-size: 0.85rem;
   background: #fff;
   border: 1px solid #e2e8f0;
 }
 
+/* Equal-width columns: 6 columns at ~16.67% each */
 .data-benchmark-table th,
 .data-benchmark-table td {
-  padding: 10px 12px;
+  width: 16.6%;
+  padding: 12px 10px;
   text-align: center;
   border-bottom: 1px solid #e2e8f0;
   vertical-align: middle;
+  line-height: 1.3;
+  word-break: break-word;
 }
 
 .data-benchmark-table thead th {
   background: #f1f5f9;
   color: #1a202c;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 0.82rem;
-  line-height: 1.3;
   border-bottom: 2px solid #cbd5e1;
 }
 
 .data-benchmark-table thead th.th-group {
-  border-bottom: 1px solid #cbd5e1;
   background: #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
+  font-weight: 500;
 }
 
 .data-benchmark-table tbody tr:last-child td {
@@ -718,7 +723,7 @@ body {
 .data-benchmark-table tbody td:first-child,
 .data-benchmark-table thead th:first-child {
   text-align: left;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .data-benchmark-table tbody td a {
@@ -733,13 +738,14 @@ body {
   text-decoration-color: #3a4f6c;
 }
 
+/* Subtle "Ours" indicator: faint neutral tint + bold label (no yellow) */
 .data-benchmark-table .row-ours {
-  background: #fef3c7;
+  background: #f8fafc;
 }
 
-.data-benchmark-table .row-ours td {
+.data-benchmark-table .cell-name-ours {
+  font-weight: 700;
   color: #1a202c;
-  font-weight: 600;
 }
 
 .data-benchmark-table .cell-yes {
@@ -752,6 +758,13 @@ body {
   color: #b91c1c;
   font-weight: 700;
   font-size: 1.05rem;
+}
+
+.data-benchmark-table .cell-hours {
+  color: #1a202c;
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-left: 4px;
 }
 
 @media (max-width: 640px) {
