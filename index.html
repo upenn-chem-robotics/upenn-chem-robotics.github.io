@@ -555,35 +555,11 @@
 <section class="section is-light" id="failure">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Failure</h2>
-    
-    <div class="content">
-      <p>
-        Understanding failures is crucial for advancing physical AI. We analyzed several modes of failure in our policies:
-      </p>
-      <ul>
-        <li>Bad grasping</li>
-        <li>Unexpected pausing</li>
-        <li>Misplacement of objects</li>
-        <li>Collisions</li>
-        <li>Dropped objects</li>
-      </ul>
-      
-      <p>
-        <strong>Oopsie-Data:</strong> Sometimes, suboptimal success or failure provides valuable learning signals. We draw inspiration from <a href="https://oopsie-data.com/">Oopsie</a>, noting that failure states can be used to train more robust recovery policies.
-      </p>
-      <p>
-        <strong>Future Work (DAgger):</strong> We plan to incorporate DAgger (Dataset Aggregation) using history (actions + images) to iteratively correct these failure modes during teleoperation.
-      </p>
-    </div>
+    <p class="section-tldr has-text-centered">
+      Example failures captured while evaluating trained policies on the real robot.
+    </p>
 
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <video autoplay controls muted loop playsinline width="100%" style="border-radius: 10px; border: 2px solid red;">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered" style="color: red;">Example: Grasping Failure</p>
-      </div>
-    </div>
+    <!-- TODO: drop in failure rollout clips here -->
   </div>
 </section>
 
