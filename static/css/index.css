@@ -873,6 +873,101 @@ body {
   font-weight: 600;
 }
 
+/* ---- Method section: single hero video + 4-step banner ---- */
+.method-video-wrap {
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
+}
+
+.method-video-wrap video {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.method-howitworks {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 1.1rem;
+  color: #1a202c;
+  margin: 0 auto 2rem auto;
+  max-width: 820px;
+}
+
+.method-howitworks strong {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.method-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.method-step {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.method-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #fde68a;
+  color: #1a202c;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.method-step-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 10px 0;
+}
+
+.method-step-chemist {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #1a202c;
+  margin: 0 0 12px 0;
+}
+
+.method-step-robotics {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #4a5568;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+@media (max-width: 900px) {
+  .method-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .method-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .data-lede,
   .section-tldr {

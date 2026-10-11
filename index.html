@@ -566,32 +566,64 @@
 <section class="section" id="method">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Method</h2>
+    <p class="section-tldr has-text-centered">
+      Teleoperate a bimanual robot, record multi-camera demonstrations, and train a visuomotor policy &mdash; all with open-source software (<a href="https://huggingface.co/lerobot" target="_blank" rel="noopener">LeRobot</a>) and hardware (<a href="https://wuphilipp.github.io/gello_site/" target="_blank" rel="noopener">GELLO</a>).
+    </p>
 
-    <div class="columns is-vcentered">
-      <div class="column is-half">
-        <h3 class="title is-4">Hardware Setup & Teleoperation</h3>
-        <p>
-          We utilize open-sourced hardware (Gello) and software (Lerobot) to enable intuitive teleoperation for data collection. The setup includes multiple camera viewpoints to capture the intricate details of chemical manipulation.
-        </p>
-      </div>
-      <div class="column is-half">
-        <video autoplay muted loop playsinline width="100%" style="border-radius: 10px;">
-          <source src="./static/videos/placeholder.mp4" type="video/mp4">
-        </video>
-      </div>
+    <!-- Single method hero video. TODO: swap placeholder for final montage. -->
+    <div class="method-video-wrap">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="./static/videos/placeholder.mp4" type="video/mp4">
+      </video>
     </div>
 
-    <div class="columns is-vcentered" style="margin-top: 30px;">
-      <div class="column is-full">
-        <h3 class="title is-4">Diffusion Policy for Chemists</h3>
-        <div class="content">
-          <p>
-            <strong>How it works:</strong> Instead of programming exact movements, we teach the robot by showing it examples. The "Diffusion Policy" takes in what the robot sees (camera images) and its current position (input), and gradually refines a plan of action until it produces the correct next movement (output).
-          </p>
-          <p>
-            Think of it like a chemist learning a new titration technique: you observe the setup, remember your training, and continuously adjust your hand movements based on the color change in the flask.
-          </p>
-        </div>
+    <p class="method-howitworks has-text-centered">
+      <strong>How it works.</strong> Robots learn from human demonstrations &mdash; no hard-coded trajectories.
+    </p>
+
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="method-step-num">1</div>
+        <h3 class="method-step-title">Teleoperate</h3>
+        <p class="method-step-chemist">
+          A chemist guides a pair of leader arms to perform a chemistry experiment while the robot mimics their exact movements in real time.
+        </p>
+        <p class="method-step-robotics">
+          A leader&ndash;follower setup uses GELLO leader arms (joint-space kinematic twins) to control two UR3 robots equipped with Robotiq&nbsp;2F-85 grippers.
+        </p>
+      </div>
+
+      <div class="method-step">
+        <div class="method-step-num">2</div>
+        <h3 class="method-step-title">Record</h3>
+        <p class="method-step-chemist">
+          Every demonstration is saved as a dataset: camera video and robot motion.
+        </p>
+        <p class="method-step-robotics">
+          Human demonstrations are logged at 10&nbsp;Hz into the LeRobot&nbsp;v2.1 dataset format, capturing joint states, gripper commands, and three synchronized RGB video streams.
+        </p>
+      </div>
+
+      <div class="method-step">
+        <div class="method-step-num">3</div>
+        <h3 class="method-step-title">Train</h3>
+        <p class="method-step-chemist">
+          A model learns from the chemist's demonstrations to predict a sequence of future actions conditioned on raw observation images.
+        </p>
+        <p class="method-step-robotics">
+          An end-to-end visuomotor Diffusion Policy is trained on the dataset to perform action chunking.
+        </p>
+      </div>
+
+      <div class="method-step">
+        <div class="method-step-num">4</div>
+        <h3 class="method-step-title">Deploy</h3>
+        <p class="method-step-chemist">
+          The trained policy drives the robot autonomously, with no human in the loop.
+        </p>
+        <p class="method-step-robotics">
+          The policy processes three live camera streams in real time to output continuous joint-position targets directly to the follower arms.
+        </p>
       </div>
     </div>
   </div>
