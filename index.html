@@ -651,15 +651,15 @@
       <ul>
         <li>
           <strong>Interdisciplinary data collection.</strong>
-          Good training data demands both chemistry and robotics expertise. Teleoperation diverges from natural human movement because the operator must adapt to the robot's reach, speed, and sensing limits while running a real experiment.
+          Good training data demands both chemistry and robotics expertise. The operator must understand the chemical reaction to execute the experiment correctly. The operator must simultaneously adapt human movements to the physical limits of the robotic hardware during teleoperation.
         </li>
         <li>
-          <strong>Vision alone is not enough.</strong>
-          Camera-only policies miss the tactile feedback needed for contact-rich tasks such as clamping glassware or seating septum caps.
+          <strong>Vision alone is not enough for learning.</strong>
+          Vision-based policies lack the tactile feedback needed for contact-rich tasks such as clamping glassware.
         </li>
         <li>
-          <strong>The chemistry lab is a demanding testbed.</strong>
-          Transparent liquids, deformable powders, and long multi-step procedures stress both perception and planning, making the lab a hard benchmark for embodied intelligence.
+          <strong>Generalization remains limited.</strong>
+          The robot performs well within the structured laboratory layout. However, the vision policies fail when presented with out-of-distribution changes, such as new labware geometries or altered workspace layouts.
         </li>
       </ul>
     </div>
